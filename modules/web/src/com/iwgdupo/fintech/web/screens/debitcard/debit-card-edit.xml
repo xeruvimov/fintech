@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.iwgdupo.fintech.web.screens.debitcard">
+    <data>
+        <instance id="debitCardDc"
+                  class="com.iwgdupo.fintech.entity.DebitCard"
+                  view="debitCard-view">
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="scrollBox" spacing="true">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="debitCardDc">
+                <column width="250px">
+                    <textField id="firstNameField" property="firstName"/>
+                    <textField id="middleNameField" property="middleName"/>
+                    <textField id="lastNameField" property="lastName"/>
+                    <dateField id="birthdayField" property="birthday"/>
+                    <textField id="phoneNumberField" property="phoneNumber"/>
+                    <textField id="emailField" property="email"/>
+                    <textField id="addressField" property="address"/>
+                    <textField id="passportNumberField" property="passportNumber"/>
+                    <textField id="passportSerialField" property="passportSerial"/>
+                    <dateField id="passportDateField" property="passportDate"/>
+                    <textField id="passportOrganisationField" property="passportOrganisation"/>
+                </column>
+            </form>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>
