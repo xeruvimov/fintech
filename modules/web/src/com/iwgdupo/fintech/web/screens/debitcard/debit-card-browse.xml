@@ -44,7 +44,7 @@
                 <column id="passportNumber"/>
                 <column id="passportSerial"/>
                 <column id="passportDate"/>
-                <column id="passportOrganisation"/>
+                <column id="passportOrganization"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"

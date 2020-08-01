@@ -11,6 +11,6 @@
         <property name="passportNumber"/>
         <property name="passportSerial"/>
         <property name="passportDate"/>
-        <property name="passportOrganisation"/>
+        <property name="passportOrganization"/>
     </view>
 </views>

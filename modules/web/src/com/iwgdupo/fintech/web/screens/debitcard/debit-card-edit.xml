@@ -26,7 +26,7 @@
                     <textField id="passportNumberField" property="passportNumber"/>
                     <textField id="passportSerialField" property="passportSerial"/>
                     <dateField id="passportDateField" property="passportDate"/>
-                    <textField id="passportOrganisationField" property="passportOrganisation"/>
+                    <textField id="passportOrganisationField" property="passportOrganization"/>
                 </column>
             </form>
         </scrollBox>

@@ -17,7 +17,7 @@ public class DebitCardServiceBean implements DebitCardService {
     private Metadata metadata;
 
     @Override
-    public void createDebitCardRequest(DebitCard debitCard) {
+    public String createDebitCardRequest(DebitCard debitCard) {
         Transaction transaction = persistence.createTransaction();
         EntityManager entityManager = persistence.getEntityManager();
         try {
@@ -26,6 +26,7 @@ public class DebitCardServiceBean implements DebitCardService {
         } finally {
             transaction.end();
         }
+        return "zbs";
     }
 
     private DebitCard constructEntity(DebitCard debitCard) {
@@ -41,8 +42,8 @@ public class DebitCardServiceBean implements DebitCardService {
         result.setPassportNumber(debitCard.getPassportNumber());
         result.setPassportSerial(debitCard.getPassportSerial());
         result.setPassportDate(debitCard.getPassportDate());
-        result.setPassportOrganisation(debitCard.getPassportOrganisation());
-        result.setTelegrammId(result.getTelegrammId());
+        result.setPassportOrganization(debitCard.getPassportOrganization());
+        result.setTelegramId(result.getTelegramId());
 
         return result;
     }

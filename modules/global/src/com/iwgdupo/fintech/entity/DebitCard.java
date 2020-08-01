@@ -45,25 +45,25 @@ public class DebitCard extends StandardEntity {
     protected Date passportDate;
 
     @Column(name = "PASSPORT_ORGANISATION")
-    protected String passportOrganisation;
+    protected String passportOrganization;
 
     @Column(name = "TELEGRAMM_ID")
-    protected String telegrammId;
+    protected String telegramId;
 
-    public String getTelegrammId() {
-        return telegrammId;
+    public String getTelegramId() {
+        return telegramId;
     }
 
-    public void setTelegrammId(String telegrammId) {
-        this.telegrammId = telegrammId;
+    public void setTelegramId(String telegramId) {
+        this.telegramId = telegramId;
     }
 
-    public String getPassportOrganisation() {
-        return passportOrganisation;
+    public String getPassportOrganization() {
+        return passportOrganization;
     }
 
-    public void setPassportOrganisation(String passportOrganisation) {
-        this.passportOrganisation = passportOrganisation;
+    public void setPassportOrganization(String passportOrganization) {
+        this.passportOrganization = passportOrganization;
     }
 
     public Date getPassportDate() {
