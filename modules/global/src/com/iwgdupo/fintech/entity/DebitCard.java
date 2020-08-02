@@ -47,15 +47,16 @@ public class DebitCard extends StandardEntity {
     @Column(name = "PASSPORT_ORGANISATION")
     protected String passportOrganization;
 
-    @Column(name = "TELEGRAMM_ID")
-    protected String telegramId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "TELEGRAM_USER_ID")
+    protected TelegramUser telegramUser;
 
-    public String getTelegramId() {
-        return telegramId;
+    public TelegramUser getTelegramUser() {
+        return telegramUser;
     }
 
-    public void setTelegramId(String telegramId) {
-        this.telegramId = telegramId;
+    public void setTelegramUser(TelegramUser telegramUser) {
+        this.telegramUser = telegramUser;
     }
 
     public String getPassportOrganization() {

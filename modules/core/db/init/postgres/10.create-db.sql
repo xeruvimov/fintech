@@ -20,8 +20,43 @@ create table FINTECH_DEBIT_CARD (
     PASSPORT_SERIAL varchar(4),
     PASSPORT_DATE date,
     PASSPORT_ORGANISATION varchar(255),
-    TELEGRAMM_ID varchar(255),
+    TELEGRAM_USER_ID uuid,
     --
     primary key (ID)
 )^
 -- end FINTECH_DEBIT_CARD
+-- begin FINTECH_MESSAGE
+create table FINTECH_MESSAGE (
+    ID uuid,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    TEXT text,
+    CUBA_USER_ID uuid,
+    DATETIME timestamp,
+    TELEGRAM_USER_ID uuid,
+    --
+    primary key (ID)
+)^
+-- end FINTECH_MESSAGE
+-- begin FINTECH_TELEGRAM_USER
+create table FINTECH_TELEGRAM_USER (
+    ID uuid,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    TELEGRAM_ID varchar(255),
+    --
+    primary key (ID)
+)^
+-- end FINTECH_TELEGRAM_USER

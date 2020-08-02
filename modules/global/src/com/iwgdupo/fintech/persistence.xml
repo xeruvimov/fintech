@@ -3,5 +3,7 @@
     <persistence-unit name="fintech" transaction-type="RESOURCE_LOCAL">
 
         <class>com.iwgdupo.fintech.entity.DebitCard</class>
+        <class>com.iwgdupo.fintech.entity.Message</class>
+        <class>com.iwgdupo.fintech.entity.TelegramUser</class>
     </persistence-unit>
 </persistence>

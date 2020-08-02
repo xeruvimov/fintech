@@ -5,6 +5,7 @@ import com.haulmont.cuba.core.Persistence;
 import com.haulmont.cuba.core.Transaction;
 import com.haulmont.cuba.core.global.Metadata;
 import com.iwgdupo.fintech.entity.DebitCard;
+import com.iwgdupo.fintech.entity.TelegramUser;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
@@ -12,16 +13,18 @@ import javax.inject.Inject;
 @Service(DebitCardService.NAME)
 public class DebitCardServiceBean implements DebitCardService {
     @Inject
+    private TelegramUserService telegramUserService;
+    @Inject
     private Persistence persistence;
     @Inject
     private Metadata metadata;
 
     @Override
-    public String createDebitCardRequest(DebitCard debitCard) {
+    public String createDebitCardRequest(DebitCard debitCard, String telegramId) {
         Transaction transaction = persistence.createTransaction();
         EntityManager entityManager = persistence.getEntityManager();
         try {
-            entityManager.persist(constructEntity(debitCard));
+            entityManager.persist(constructEntity(debitCard, telegramId));
             transaction.commit();
         } finally {
             transaction.end();
@@ -29,7 +32,7 @@ public class DebitCardServiceBean implements DebitCardService {
         return "zbs";
     }
 
-    private DebitCard constructEntity(DebitCard debitCard) {
+    private DebitCard constructEntity(DebitCard debitCard, String telegramId) {
         DebitCard result = metadata.create(DebitCard.class);
 
         result.setFirstName(debitCard.getFirstName());
@@ -43,7 +46,7 @@ public class DebitCardServiceBean implements DebitCardService {
         result.setPassportSerial(debitCard.getPassportSerial());
         result.setPassportDate(debitCard.getPassportDate());
         result.setPassportOrganization(debitCard.getPassportOrganization());
-        result.setTelegramId(result.getTelegramId());
+        result.setTelegramUser(telegramUserService.findOrCreateUser(telegramId));
 
         return result;
     }

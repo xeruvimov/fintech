@@ -12,6 +12,8 @@
         <property name="remoteServices">
             <map>
                 <entry key="fintech_DebitCardService" value="com.iwgdupo.fintech.service.DebitCardService"/>
+                <entry key="fintech_ChatService" value="com.iwgdupo.fintech.service.ChatService"/>
+                <entry key="fintech_TelegramUserService" value="com.iwgdupo.fintech.service.TelegramUserService"/>
             </map>
         </property>
     </bean>
