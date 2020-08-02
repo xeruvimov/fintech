@@ -5,10 +5,10 @@ import com.haulmont.cuba.core.Persistence;
 import com.haulmont.cuba.core.Transaction;
 import com.haulmont.cuba.core.global.Metadata;
 import com.iwgdupo.fintech.entity.DebitCard;
-import com.iwgdupo.fintech.entity.TelegramUser;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
+import java.util.UUID;
 
 @Service(DebitCardService.NAME)
 public class DebitCardServiceBean implements DebitCardService {
@@ -20,16 +20,13 @@ public class DebitCardServiceBean implements DebitCardService {
     private Metadata metadata;
 
     @Override
-    public String createDebitCardRequest(DebitCard debitCard, String telegramId) {
-        Transaction transaction = persistence.createTransaction();
-        EntityManager entityManager = persistence.getEntityManager();
-        try {
-            entityManager.persist(constructEntity(debitCard, telegramId));
+    public UUID createDebitCardRequest(DebitCard debitCard, String telegramId) {
+        try(Transaction transaction = persistence.createTransaction()) {
+            DebitCard entity = constructEntity(debitCard, telegramId);
+            persistence.getEntityManager().persist(entity);
             transaction.commit();
-        } finally {
-            transaction.end();
+            return entity.getId();
         }
-        return "zbs";
     }
 
     private DebitCard constructEntity(DebitCard debitCard, String telegramId) {

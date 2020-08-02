@@ -89,8 +89,9 @@ public class ChatServiceBean implements ChatService {
         resultMessage.setDatetime(timeSource.currentTimestamp());
         resultMessage.setCubaUser(cubaUser);
 
-        try (Transaction ignored = persistence.createTransaction()) {
+        try (Transaction transaction = persistence.createTransaction()) {
             persistence.getEntityManager().persist(resultMessage);
+            transaction.commit();
         }
     }
 }
