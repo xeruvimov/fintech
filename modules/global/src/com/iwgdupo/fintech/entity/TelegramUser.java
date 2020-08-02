@@ -2,10 +2,7 @@ package com.iwgdupo.fintech.entity;
 
 import com.haulmont.cuba.core.entity.StandardEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @Table(name = "FINTECH_TELEGRAM_USER")
@@ -16,6 +13,7 @@ public class TelegramUser extends StandardEntity {
     @Column(name = "TELEGRAM_ID")
     protected String telegramId;
 
+    @OrderBy("datetime")
     @OneToMany(mappedBy = "telegramUser")
     protected List<Message> messages;
 

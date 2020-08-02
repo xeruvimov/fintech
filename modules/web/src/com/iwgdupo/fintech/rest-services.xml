@@ -8,8 +8,8 @@
     </service>
     <service name="fintech_ChatService">
         <method name="receiveMessage" anonymousAllowed="true">
-            <param name="message" type="java.lang.String"/>
             <param name="telegramId" type="java.lang.String"/>
+            <param name="message" type="java.lang.String"/>
         </method>
     </service>
 </services>

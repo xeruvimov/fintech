@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://caption"
+        messagesPack="com.iwgdupo.fintech.web.screens">
+    <data>
+        <collection id="telegramUsersDc" class="com.iwgdupo.fintech.entity.TelegramUser" view="telegramUser-chat-view">
+            <loader id="telegramUsersDl">
+                <query>
+                    <![CDATA[select e from fintech_TelegramUser e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <layout>
+        <split orientation="horizontal" height="100%" width="100%">
+            <table id="telegramUsersTable" height="100%" width="100%" dataContainer="telegramUsersDc">
+                <actions>
+                    <action id="refresh" type="refresh"/>
+                </actions>
+                <buttonsPanel alwaysVisible="true">
+                    <button id="telegramUsersTableRefreshBtn" action="telegramUsersTable.refresh"/>
+                </buttonsPanel>
+                <columns>
+                    <column id="telegramId"/>
+                </columns>
+            </table>
+            <vbox id="vbox" height="100%" margin="true" responsive="true" spacing="true" expand="scrollBox">
+                <scrollBox id="scrollBox" align="BOTTOM_CENTER" width="100%" height="100%">
+                    <vbox id="vboxMessages" spacing="true" align="BOTTOM_CENTER"/>
+                </scrollBox>
+                <hbox spacing="true" width="100%" margin="true" align="BOTTOM_CENTER">
+                    <textField id="messageTextField" height="30px" width="100%"/>
+                    <button id="sendButton" width="100%" invoke="onSendButtonClick"
+                            caption="&#1054;&#1090;&#1087;&#1088;&#1072;&#1074;&#1080;&#1090;&#1100;"/>
+                </hbox>
+            </vbox>
+        </split>
+    </layout>
+</window>

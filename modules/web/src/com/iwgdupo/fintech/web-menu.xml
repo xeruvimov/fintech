@@ -3,4 +3,5 @@
     <menu id="requests" insertBefore="administration">
         <item screen="fintech_DebitCard.browse"/>
     </menu>
+    <item screen="fintech_ChatScreen" insertAfter="requests"/>
 </menu-config>

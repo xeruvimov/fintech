@@ -13,4 +13,11 @@
         <property name="passportDate"/>
         <property name="passportOrganization"/>
     </view>
+    <view entity="fintech_TelegramUser" name="telegramUser-chat-view" extends="_local">
+        <property name="messages" view="_minimal">
+            <property name="text"/>
+            <property name="cubaUser" view="_minimal"/>
+            <property name="datetime"/>
+        </property>
+    </view>
 </views>
