@@ -20,4 +20,10 @@
             <property name="datetime"/>
         </property>
     </view>
+    <view entity="fintech_Message" name="message-chat-view" extends="_local">
+        <property name="cubaUser" view="_minimal"/>
+        <property name="telegramUser" view="_minimal">
+            <property name="telegramId"/>
+        </property>
+    </view>
 </views>

@@ -21,6 +21,7 @@ create table FINTECH_DEBIT_CARD (
     PASSPORT_DATE date,
     PASSPORT_ORGANISATION varchar(255),
     TELEGRAM_USER_ID uuid,
+    STATUS varchar(50),
     --
     primary key (ID)
 )^
