@@ -11,8 +11,12 @@
             </loader>
         </collection>
     </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <timer id="timerToReloadMsg" repeating="true" delay="2000" autostart="true" onTimer="onTimerToReloadMsgClick"/>
+    </facets>
     <layout>
-        <split orientation="horizontal" height="100%" width="100%">
+        <split orientation="horizontal" height="100%" width="100%" pos="30">
             <table id="telegramUsersTable" height="100%" width="100%" dataContainer="telegramUsersDc">
                 <actions>
                     <action id="refresh" type="refresh"/>
@@ -28,7 +32,7 @@
                 <scrollBox id="scrollBox" align="BOTTOM_CENTER" width="100%" height="100%">
                     <vbox id="vboxMessages" spacing="true" align="BOTTOM_CENTER"/>
                 </scrollBox>
-                <hbox spacing="true" width="100%" margin="true" align="BOTTOM_CENTER">
+                <hbox spacing="true" width="100%" margin="true" align="BOTTOM_CENTER" expand="messageTextField">
                     <textField id="messageTextField" height="30px" width="100%"/>
                     <button id="sendButton" width="100%" invoke="onSendButtonClick"
                             caption="&#1054;&#1090;&#1087;&#1088;&#1072;&#1074;&#1080;&#1090;&#1100;"/>
