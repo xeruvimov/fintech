@@ -11,6 +11,7 @@ import java.util.Date;
 @Entity(name = "fintech_DebitCard")
 public class DebitCard extends StandardEntity {
     private static final long serialVersionUID = 3549666836285502815L;
+    public static final String NAME = "DebitCard";
 
     @Column(name = "FIRST_NAME")
     protected String firstName;
@@ -50,6 +51,17 @@ public class DebitCard extends StandardEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TELEGRAM_USER_ID")
     protected TelegramUser telegramUser;
+
+    @Column(name = "STATUS")
+    private String status;
+
+    public RequestStatus getStatus() {
+        return status == null ? null : RequestStatus.fromId(status);
+    }
+
+    public void setStatus(RequestStatus status) {
+        this.status = status == null ? null : status.getId();
+    }
 
     public TelegramUser getTelegramUser() {
         return telegramUser;

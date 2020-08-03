@@ -12,5 +12,13 @@
             <param name="message" type="java.lang.String"/>
         </method>
     </service>
+    <service name="fintech_RequestStatusService">
+        <method name="getActiveRequestsByUserId" anonymousAllowed="true">
+            <param name="id" type="java.lang.String"/>
+        </method>
+        <method name="getRequestById" anonymousAllowed="true">
+            <param name="id" type="java.lang.String"/>
+        </method>
+    </service>
 </services>
 
