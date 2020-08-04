@@ -4,7 +4,7 @@
     <view entity="fintech_DebitCard" name="debitCard-view" extends="_minimal">
         <property name="middleName"/>
         <property name="lastName"/>
-        <property name="birthday"/>
+        <property name="birthdate"/>
         <property name="phoneNumber"/>
         <property name="email"/>
         <property name="address"/>

@@ -6,6 +6,12 @@
             <param name="telegramId" type="java.lang.String"/>
         </method>
     </service>
+    <service name="fintech_CreditCardService">
+        <method name="createCreditCardRequest" anonymousAllowed="true">
+            <param name="creditCard" type="com.iwgdupo.fintech.entity.CreditCard"/>
+            <param name="telegramId" type="java.lang.String"/>
+        </method>
+    </service>
     <service name="fintech_ChatService">
         <method name="receiveMessage" anonymousAllowed="true">
             <param name="telegramId" type="java.lang.String"/>

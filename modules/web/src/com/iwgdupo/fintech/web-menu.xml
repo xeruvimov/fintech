@@ -2,6 +2,7 @@
 <menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
     <menu id="requests" insertBefore="administration">
         <item screen="fintech_DebitCard.browse"/>
+        <item screen="fintech_CreditCard.browse" caption="mainMsg://menu_config.fintech_CreditCard.browse"/>
     </menu>
     <item screen="fintech_ChatScreen" insertAfter="requests"/>
 </menu-config>

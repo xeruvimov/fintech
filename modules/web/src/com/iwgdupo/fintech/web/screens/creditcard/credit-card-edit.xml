@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
-        caption="msg://editorCaption"
+        caption="msg://creditCardEdit.caption"
         focusComponent="form"
-        messagesPack="com.iwgdupo.fintech.web.screens.debitcard">
+        messagesPack="com.iwgdupo.fintech.web.screens.creditcard">
     <data>
-        <instance id="debitCardDc"
-                  class="com.iwgdupo.fintech.entity.DebitCard"
-                  view="debitCard-view">
+        <instance id="creditCardDc"
+                  class="com.iwgdupo.fintech.entity.CreditCard">
+            <view extends="_local"/>
             <loader/>
         </instance>
     </data>
@@ -14,19 +14,26 @@
                 width="800"/>
     <layout expand="scrollBox" spacing="true">
         <scrollBox id="scrollBox" spacing="true">
-            <form id="form" dataContainer="debitCardDc">
-                <column width="250px">
+            <form id="form" dataContainer="creditCardDc">
+                <column width="350px">
                     <textField id="firstNameField" property="firstName"/>
                     <textField id="middleNameField" property="middleName"/>
                     <textField id="lastNameField" property="lastName"/>
-                    <dateField id="birthdayField" property="birthdate"/>
+                    <dateField id="birthdateField" property="birthdate"/>
                     <textField id="phoneNumberField" property="phoneNumber"/>
                     <textField id="emailField" property="email"/>
                     <textField id="addressField" property="address"/>
                     <textField id="passportNumberField" property="passportNumber"/>
                     <textField id="passportSerialField" property="passportSerial"/>
                     <dateField id="passportDateField" property="passportDate"/>
-                    <textField id="passportOrganisationField" property="passportOrganization"/>
+                    <textField id="passportOrganizationField" property="passportOrganization"/>
+                    <textField id="workPlaceField" property="workPlace"/>
+                    <textField id="workExperienceField" property="workExperience"/>
+                    <textField id="monthlyIncomeField" property="monthlyIncome"/>
+                    <textField id="employerAddressField" property="employerAddress"/>
+                    <textField id="employerPhoneNumberField" property="employerPhoneNumber"/>
+                    <textField id="maritalStatusField" property="maritalStatus"/>
+                    <lookupField id="statusField" property="status"/>
                 </column>
             </form>
         </scrollBox>

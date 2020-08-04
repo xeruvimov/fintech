@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
         xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
-        caption="msg://browseCaption"
-        focusComponent="debitCardsTable"
-        messagesPack="com.iwgdupo.fintech.web.screens.debitcard">
+        caption="msg://creditCardBrowse.caption"
+        focusComponent="creditCardsTable"
+        messagesPack="com.iwgdupo.fintech.web.screens.creditcard">
     <data readOnly="true">
-        <collection id="debitCardsDc"
-                    class="com.iwgdupo.fintech.entity.DebitCard"
-                    view="debitCard-view">
-            <loader id="debitCardsDl">
+        <collection id="creditCardsDc"
+                    class="com.iwgdupo.fintech.entity.CreditCard">
+            <view extends="_local"/>
+            <loader id="creditCardsDl">
                 <query>
-                    <![CDATA[select e from fintech_DebitCard e]]>
+                    <![CDATA[select e from fintech_CreditCard e]]>
                 </query>
             </loader>
         </collection>
     </data>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="debitCardsTable"
+    <layout expand="creditCardsTable"
             spacing="true">
         <filter id="filter"
-                applyTo="debitCardsTable"
-                dataLoader="debitCardsDl">
+                applyTo="creditCardsTable"
+                dataLoader="creditCardsDl">
             <properties include=".*"/>
         </filter>
-        <groupTable id="debitCardsTable"
+        <groupTable id="creditCardsTable"
                     width="100%"
-                    dataContainer="debitCardsDc">
+                    dataContainer="creditCardsDc">
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
@@ -45,14 +45,21 @@
                 <column id="passportSerial"/>
                 <column id="passportDate"/>
                 <column id="passportOrganization"/>
+                <column id="workPlace"/>
+                <column id="workExperience"/>
+                <column id="monthlyIncome"/>
+                <column id="employerAddress"/>
+                <column id="employerPhoneNumber"/>
+                <column id="maritalStatus"/>
+                <column id="status"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn" action="debitCardsTable.create"/>
-                <button id="editBtn" action="debitCardsTable.edit"/>
-                <button id="removeBtn" action="debitCardsTable.remove"/>
-                <button id="refreshBtn" action="debitCardsTable.refresh"/>
+                <button id="createBtn" action="creditCardsTable.create"/>
+                <button id="editBtn" action="creditCardsTable.edit"/>
+                <button id="removeBtn" action="creditCardsTable.remove"/>
+                <button id="refreshBtn" action="creditCardsTable.refresh"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

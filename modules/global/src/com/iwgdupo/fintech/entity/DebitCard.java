@@ -24,7 +24,7 @@ public class DebitCard extends StandardEntity {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "BIRTHDAY")
-    protected Date birthday;
+    protected Date birthdate;
 
     @Column(name = "PHONE_NUMBER")
     protected String phoneNumber;
@@ -50,7 +50,7 @@ public class DebitCard extends StandardEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TELEGRAM_USER_ID")
-    protected TelegramUser telegramUser;
+    protected TelegramUser userMessager;
 
     @Column(name = "STATUS")
     private String status;
@@ -63,12 +63,12 @@ public class DebitCard extends StandardEntity {
         this.status = status == null ? null : status.getId();
     }
 
-    public TelegramUser getTelegramUser() {
-        return telegramUser;
+    public TelegramUser getUserMessager() {
+        return userMessager;
     }
 
-    public void setTelegramUser(TelegramUser telegramUser) {
-        this.telegramUser = telegramUser;
+    public void setUserMessager(TelegramUser userMessager) {
+        this.userMessager = userMessager;
     }
 
     public String getPassportOrganization() {
@@ -119,12 +119,12 @@ public class DebitCard extends StandardEntity {
         this.email = email;
     }
 
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
     }
 
-    public Date getBirthday() {
-        return birthday;
+    public Date getBirthdate() {
+        return birthdate;
     }
 
     public String getPhoneNumber() {
