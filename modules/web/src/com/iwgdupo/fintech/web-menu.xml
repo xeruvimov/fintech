@@ -4,5 +4,17 @@
         <item screen="fintech_DebitCard.browse"/>
         <item screen="fintech_CreditCard.browse" caption="mainMsg://menu_config.fintech_CreditCard.browse"/>
     </menu>
-    <item screen="fintech_ChatScreen" insertAfter="requests"/>
+
+    <separator insertAfter="requests"/>
+
+    <menu id="inWork" insertBefore="administration">
+        <item screen="fintech_DebitCardWork.browse"/>
+        <item screen="fintech_CreditCardWork.browse"/>
+    </menu>
+
+    <separator insertAfter="inWork"/>
+
+    <item id="chat" screen="fintech_ChatScreen" insertBefore="administration"/>
+
+    <separator insertAfter="chat"/>
 </menu-config>

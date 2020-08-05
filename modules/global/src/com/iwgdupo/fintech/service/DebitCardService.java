@@ -8,4 +8,6 @@ public interface DebitCardService {
     String NAME = "fintech_DebitCardService";
 
     UUID createDebitCardRequest(DebitCard debitCard, String telegramId);
+
+    DebitCard mergeDebitCardById(DebitCard debitCard);
 }

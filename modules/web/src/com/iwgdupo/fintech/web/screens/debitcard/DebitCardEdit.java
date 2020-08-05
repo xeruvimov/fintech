@@ -8,4 +8,5 @@ import com.iwgdupo.fintech.entity.DebitCard;
 @EditedEntityContainer("debitCardDc")
 @LoadDataBeforeShow
 public class DebitCardEdit extends StandardEditor<DebitCard> {
+    //todo сделать скрин для дебетовых в работе
 }

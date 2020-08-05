@@ -168,3 +168,14 @@ task restart(dependsOn: ['stop', ":${modulePrefix}-core:deploy", ":${modulePrefi
 }
 restart.finalizedBy start
 
+task buildUberJar(type: CubaUberJarBuilding) {
+    singleJar = true
+    appProperties = ['cuba.automaticDatabaseUpdate'    : true,
+                     'cuba.dataSource.username'        : 'cuba',
+                     'cuba.dataSource.password'        : 'cuba',
+                     'cuba.dataSource.dbName'          : 'fintech',
+                     'cuba.dataSource.host'            : 'localhost',
+                     'cuba.dataSource.port'            : '5432',
+                     'cuba.dataSource.connectionParams': '',
+                     'cuba.dataSourceProvider'         : 'application']
+}

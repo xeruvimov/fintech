@@ -12,6 +12,7 @@
         <property name="passportSerial"/>
         <property name="passportDate"/>
         <property name="passportOrganization"/>
+        <property name="status"/>
     </view>
     <view entity="fintech_TelegramUser" name="telegramUser-chat-view" extends="_local">
         <property name="messages" view="_minimal">

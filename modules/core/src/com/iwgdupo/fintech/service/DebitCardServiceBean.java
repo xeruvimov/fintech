@@ -17,11 +17,20 @@ public class DebitCardServiceBean implements DebitCardService {
 
     @Override
     public UUID createDebitCardRequest(DebitCard debitCard, String telegramId) {
-        try(Transaction transaction = persistence.createTransaction()) {
+        try (Transaction transaction = persistence.createTransaction()) {
             DebitCard entity = constructEntityUtil.constructEntity(debitCard, telegramId);
             persistence.getEntityManager().persist(entity);
             transaction.commit();
             return entity.getId();
+        }
+    }
+
+    @Override
+    public DebitCard mergeDebitCardById(DebitCard debitCard) {
+        try (Transaction transaction = persistence.createTransaction()) {
+            DebitCard result = persistence.getEntityManager().merge(debitCard);
+            transaction.commit();
+            return result;
         }
     }
 }

@@ -5,11 +5,17 @@
             <param name="debitCard" type="com.iwgdupo.fintech.entity.DebitCard"/>
             <param name="telegramId" type="java.lang.String"/>
         </method>
+        <method name="mergeDebitCardById" anonymousAllowed="true">
+            <param name="debitCard" type="com.iwgdupo.fintech.entity.DebitCard"/>
+        </method>
     </service>
     <service name="fintech_CreditCardService">
         <method name="createCreditCardRequest" anonymousAllowed="true">
             <param name="creditCard" type="com.iwgdupo.fintech.entity.CreditCard"/>
             <param name="telegramId" type="java.lang.String"/>
+        </method>
+        <method name="mergeCreditCardById" anonymousAllowed="true">
+            <param name="creditCard" type="com.iwgdupo.fintech.entity.CreditCard"/>
         </method>
     </service>
     <service name="fintech_ChatService">

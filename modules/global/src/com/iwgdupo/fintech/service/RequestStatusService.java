@@ -9,5 +9,6 @@ public interface RequestStatusService {
 
     List<MinimalRequestDTO> getActiveRequestsByUserId(String id);
 
+    @Deprecated
     MinimalRequestDTO getRequestById(String id, String type);
 }

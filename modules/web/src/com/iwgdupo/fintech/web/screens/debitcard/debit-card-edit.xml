@@ -27,6 +27,7 @@
                     <textField id="passportSerialField" property="passportSerial"/>
                     <dateField id="passportDateField" property="passportDate"/>
                     <textField id="passportOrganisationField" property="passportOrganization"/>
+                    <lookupField id="statusField" property="status"/>
                 </column>
             </form>
         </scrollBox>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://browseCaption"
+        focusComponent="creditCardsTable"
+        messagesPack="com.iwgdupo.fintech.web.screens.creditcard">
+    <data readOnly="true">
+        <collection id="creditCardsDc"
+                    class="com.iwgdupo.fintech.entity.CreditCard"
+                    view="_local">
+            <loader id="creditCardsDl">
+                <query>
+                    <![CDATA[select e from fintech_CreditCard e where e.status = :inProgress]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="creditCardsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="creditCardsTable"
+                dataLoader="creditCardsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="creditCardsTable"
+                    width="100%"
+                    dataContainer="creditCardsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+                <action id="refresh" type="refresh"/>
+            </actions>
+            <columns>
+                <column id="firstName"/>
+                <column id="middleName"/>
+                <column id="lastName"/>
+                <column id="birthdate"/>
+                <column id="phoneNumber"/>
+                <column id="email"/>
+                <column id="address"/>
+                <column id="passportNumber"/>
+                <column id="passportSerial"/>
+                <column id="passportDate"/>
+                <column id="passportOrganization"/>
+                <column id="workPlace"/>
+                <column id="workExperience"/>
+                <column id="monthlyIncome"/>
+                <column id="employerAddress"/>
+                <column id="employerPhoneNumber"/>
+                <column id="maritalStatus"/>
+                <column id="status"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="creditCardsTable.create"/>
+                <button id="editBtn" action="creditCardsTable.edit"/>
+                <button id="removeBtn" action="creditCardsTable.remove"/>
+                <button id="refreshBtn" action="creditCardsTable.refresh"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

@@ -25,4 +25,13 @@ public class CreditCardServiceBean implements CreditCardService {
             return entity.getId();
         }
     }
+
+    @Override
+    public CreditCard mergeCreditCardById(CreditCard creditCard) {
+        try (Transaction transaction = persistence.createTransaction()) {
+            CreditCard result = persistence.getEntityManager().merge(creditCard);
+            transaction.commit();
+            return result;
+        }
+    }
 }

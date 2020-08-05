@@ -3,6 +3,7 @@ package com.iwgdupo.fintech.service;
 import com.haulmont.cuba.core.global.Metadata;
 import com.iwgdupo.fintech.entity.CreditCard;
 import com.iwgdupo.fintech.entity.DebitCard;
+import com.iwgdupo.fintech.entity.RequestStatus;
 import org.springframework.stereotype.Component;
 
 import javax.inject.Inject;
@@ -30,6 +31,8 @@ public class ConstructEntityUtil {
         result.setPassportOrganization(debitCard.getPassportOrganization());
         result.setUserMessager(telegramUserService.findOrCreateUser(telegramId));
 
+        result.setStatus(RequestStatus.NEW);
+
         return result;
     }
 
@@ -55,6 +58,8 @@ public class ConstructEntityUtil {
         result.setEmployerAddress(creditCard.getEmployerAddress());
         result.setEmployerPhoneNumber(creditCard.getEmployerPhoneNumber());
         result.setMaritalStatus(creditCard.getMaritalStatus());
+
+        result.setStatus(RequestStatus.NEW);
 
         return result;
     }

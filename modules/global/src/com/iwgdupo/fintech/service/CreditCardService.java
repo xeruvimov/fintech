@@ -8,4 +8,6 @@ public interface CreditCardService {
     String NAME = "fintech_CreditCardService";
 
     UUID createCreditCardRequest(CreditCard creditCard, String telegramId);
+
+    CreditCard mergeCreditCardById(CreditCard creditCard);
 }

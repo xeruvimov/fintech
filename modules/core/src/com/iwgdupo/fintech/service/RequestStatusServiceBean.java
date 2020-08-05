@@ -25,6 +25,7 @@ public class RequestStatusServiceBean implements RequestStatusService {
     }
 
     @Override
+    @Deprecated
     public MinimalRequestDTO getRequestById(String id, String type) {
         try(Transaction transaction = persistence.createTransaction()) {
             switch (type) {
