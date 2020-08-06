@@ -41,7 +41,7 @@ public class RequestStatusServiceBean implements RequestStatusService {
     private List<MinimalRequestDTO> getActiveDebitCard(String id) {
         try (Transaction transaction = persistence.createTransaction()) {
             List<DebitCard> debitCardList = persistence.getEntityManager().createQuery("select dc from fintech_DebitCard dc " +
-                    "where dc.userMessager.id = :id", DebitCard.class)
+                    "where dc.userMessager.telegramId = :id", DebitCard.class)
                     .setParameter("id", id)
                     .getResultList();
             transaction.commit();
