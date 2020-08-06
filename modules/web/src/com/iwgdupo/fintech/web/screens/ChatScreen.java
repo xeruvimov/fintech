@@ -1,5 +1,6 @@
 package com.iwgdupo.fintech.web.screens;
 
+import com.haulmont.cuba.core.global.Sort;
 import com.haulmont.cuba.gui.UiComponents;
 import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.model.CollectionContainer;
@@ -51,6 +52,9 @@ public class ChatScreen extends Screen {
 
     @Subscribe
     protected void onAfterInit(AfterInitEvent event) {
+        messageTextField.addEnterPressListener(enterPressEvent -> onSendButtonClick());
+
+        messagesDl.setSort(Sort.by("datetime"));
         telegramUsersDl.load();
     }
 
@@ -69,7 +73,8 @@ public class ChatScreen extends Screen {
         } else {
             name.setValue(message.getTelegramUser().getTelegramId() + ":");
         }
-        name.setAlignment(Component.Alignment.TOP_LEFT);
+        name.setAlignment(Component.Alignment.TOP_RIGHT);
+        name.setWidth("120px");
 
         Label<String> text = uiComponents.create(Label.NAME);
         text.setValue(message.getText());
@@ -92,6 +97,7 @@ public class ChatScreen extends Screen {
     public void onSendButtonClick() {
         if (currentUser != null) {
             chatService.sendMessage(currentUser.getTelegramId(), messageTextField.getValue());
+            messageTextField.clear();
         }
     }
 

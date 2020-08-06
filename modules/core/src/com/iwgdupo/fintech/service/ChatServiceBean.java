@@ -18,7 +18,6 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
-import java.net.HttpURLConnection;
 
 @Service(ChatService.NAME)
 public class ChatServiceBean implements ChatService {
@@ -55,7 +54,7 @@ public class ChatServiceBean implements ChatService {
             HttpPost post = new HttpPost(postUrl);
             StringEntity postingString = new StringEntity(gson.toJson(pojo));
             post.setEntity(postingString);
-            post.setHeader("Content-type", "application/json");
+            post.setHeader("Content-type", "application/json; charset=utf-8");
             HttpResponse response = httpClient.execute(post);
 
             saveMessage(message,
