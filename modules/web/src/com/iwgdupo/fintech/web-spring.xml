@@ -16,6 +16,7 @@
                 <entry key="fintech_TelegramUserService" value="com.iwgdupo.fintech.service.TelegramUserService"/>
                 <entry key="fintech_RequestStatusService" value="com.iwgdupo.fintech.service.RequestStatusService"/>
                 <entry key="fintech_CreditCardService" value="com.iwgdupo.fintech.service.CreditCardService"/>
+                <entry key="fintech_AdsService" value="com.iwgdupo.fintech.service.AdsService"/>
             </map>
         </property>
     </bean>
