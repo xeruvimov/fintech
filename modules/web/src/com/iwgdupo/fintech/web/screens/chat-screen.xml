@@ -32,7 +32,7 @@
                     <button id="telegramUsersTableRefreshBtn" action="telegramUsersTable.refresh"/>
                 </buttonsPanel>
                 <columns>
-                    <column id="telegramId"/>
+                    <column id="fullNameUser" caption="Клиент"/>
                 </columns>
             </table>
             <vbox id="vbox" height="100%" margin="true" responsive="true" spacing="true" expand="scrollMessagesBox">

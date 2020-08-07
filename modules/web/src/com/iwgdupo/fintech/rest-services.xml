@@ -4,6 +4,7 @@
         <method name="createDebitCardRequest" anonymousAllowed="true">
             <param name="debitCard" type="com.iwgdupo.fintech.entity.DebitCard"/>
             <param name="telegramId" type="java.lang.String"/>
+            <param name="userType" type="java.lang.String"/>
         </method>
         <method name="mergeDebitCardById" anonymousAllowed="true">
             <param name="debitCard" type="com.iwgdupo.fintech.entity.DebitCard"/>
@@ -13,6 +14,7 @@
         <method name="createCreditCardRequest" anonymousAllowed="true">
             <param name="creditCard" type="com.iwgdupo.fintech.entity.CreditCard"/>
             <param name="telegramId" type="java.lang.String"/>
+            <param name="userType" type="java.lang.String"/>
         </method>
         <method name="mergeCreditCardById" anonymousAllowed="true">
             <param name="creditCard" type="com.iwgdupo.fintech.entity.CreditCard"/>
@@ -22,6 +24,7 @@
         <method name="receiveMessage" anonymousAllowed="true">
             <param name="telegramId" type="java.lang.String"/>
             <param name="message" type="java.lang.String"/>
+            <param name="userType" type="java.lang.String"/>
         </method>
     </service>
     <service name="fintech_RequestStatusService">

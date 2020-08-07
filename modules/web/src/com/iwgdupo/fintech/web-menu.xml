@@ -16,5 +16,7 @@
 
     <item id="chat" screen="fintech_ChatScreen" insertBefore="administration"/>
 
+    <item screen="fintech_TelegramUser.browse" insertBefore="administration"/>
+
     <separator insertAfter="chat"/>
 </menu-config>

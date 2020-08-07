@@ -16,13 +16,16 @@ public class TelegramUserServiceBean implements TelegramUserService {
     private Metadata metadata;
 
     @Override
-    public TelegramUser findByTelegramId(String id) {
+    public TelegramUser findByTelegramId(String id, String userType) {
         try (Transaction transaction = persistence.createTransaction()) {
             TelegramUser result = persistence
                     .getEntityManager()
-                    .createQuery("select u from fintech_TelegramUser u where u.telegramId = :tlgId",
+                    .createQuery("select u from fintech_TelegramUser u " +
+                                    "   where u.msgId = :tlgId " +
+                                    "and u.userType = :userType",
                             TelegramUser.class)
                     .setParameter("tlgId", id)
+                    .setParameter("userType", userType)
                     .setViewName("_local")
                     .getFirstResult();
             transaction.commit();
@@ -31,10 +34,11 @@ public class TelegramUserServiceBean implements TelegramUserService {
     }
 
     @Override
-    public TelegramUser createUser(String telegramId) {
+    public TelegramUser createUser(String telegramId, String userType) {
         TelegramUser telegramUser = metadata.create(TelegramUser.class);
 
-        telegramUser.setTelegramId(telegramId);
+        telegramUser.setMsgId(telegramId);
+        telegramUser.setUserType(userType);
 
         try (Transaction transaction = persistence.createTransaction()) {
             persistence.getEntityManager().persist(telegramUser);
@@ -45,10 +49,10 @@ public class TelegramUserServiceBean implements TelegramUserService {
     }
 
     @Override
-    public TelegramUser findOrCreateUser(String telegramId) {
-        TelegramUser telegramUser = findByTelegramId(telegramId);
+    public TelegramUser findOrCreateUser(String telegramId, String userType) {
+        TelegramUser telegramUser = findByTelegramId(telegramId, userType);
         if (telegramUser == null) {
-            telegramUser = createUser(telegramId);
+            telegramUser = createUser(telegramId, userType);
         }
         return telegramUser;
     }

@@ -35,18 +35,19 @@ public class ChatServiceBean implements ChatService {
     private UserSessionSource userSessionSource;
 
     @Override
-    public String receiveMessage(String telegramId, String message) {
-        saveMessage(message, telegramUserService.findOrCreateUser(telegramId));
+    public String receiveMessage(String telegramId, String message, String userType) {
+        saveMessage(message, telegramUserService.findOrCreateUser(telegramId, userType));
         return "Ok";
     }
 
     @Override
-    public void sendMessage(String telegramId, String message) {
+    public void sendMessage(TelegramUser msgUser, String message) {
         try {
             TelegramMessagePOJO pojo = new TelegramMessagePOJO();
 
             pojo.setMessage(message);
-            pojo.setTelegramId(telegramId);
+            pojo.setTelegramId(msgUser.getMsgId());
+            pojo.setUserType(msgUser.getUserType());
 
             String postUrl = AppContext.getProperty("fintech.bot.ip") + URL_SEND_MSG;
             Gson gson = new Gson();
@@ -58,7 +59,7 @@ public class ChatServiceBean implements ChatService {
             HttpResponse response = httpClient.execute(post);
 
             saveMessage(message,
-                    telegramUserService.findOrCreateUser(telegramId),
+                    msgUser,
                     userSessionSource.getUserSession().getCurrentOrSubstitutedUser());
         } catch (Exception e) {
             e.printStackTrace();
@@ -86,6 +87,15 @@ public class ChatServiceBean implements ChatService {
     class TelegramMessagePOJO {
         String telegramId;
         String message;
+        String userType;
+
+        public String getUserType() {
+            return userType;
+        }
+
+        public void setUserType(String userType) {
+            this.userType = userType;
+        }
 
         public String getTelegramId() {
             return telegramId;

@@ -7,7 +7,7 @@ import java.util.UUID;
 public interface CreditCardService {
     String NAME = "fintech_CreditCardService";
 
-    UUID createCreditCardRequest(CreditCard creditCard, String telegramId);
+    UUID createCreditCardRequest(CreditCard creditCard, String telegramId, String userType);
 
     CreditCard mergeCreditCardById(CreditCard creditCard);
 }

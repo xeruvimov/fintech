@@ -30,8 +30,8 @@ public class AdsServiceBean implements AdsService {
 
         for (TelegramUser telegramUser : telegramUsers) {
             try {
-                log.debug("Try send ads to ["  + telegramUser.getTelegramId() + "]");
-                chatService.sendMessage(telegramUser.getTelegramId(), MESSAGE);
+                log.debug("Try send ads to ["  + telegramUser.getMsgId() + "]");
+                chatService.sendMessage(telegramUser, MESSAGE);
             } catch (Exception e) {
                 e.printStackTrace();
             }

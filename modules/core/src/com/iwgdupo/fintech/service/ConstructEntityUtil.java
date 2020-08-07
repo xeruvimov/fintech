@@ -15,7 +15,7 @@ public class ConstructEntityUtil {
     @Inject
     private TelegramUserService telegramUserService;
 
-    public DebitCard constructEntity(DebitCard debitCard, String telegramId) {
+    public DebitCard constructEntity(DebitCard debitCard, String telegramId, String userType) {
         DebitCard result = metadata.create(DebitCard.class);
 
         result.setFirstName(debitCard.getFirstName());
@@ -29,14 +29,14 @@ public class ConstructEntityUtil {
         result.setPassportSerial(debitCard.getPassportSerial());
         result.setPassportDate(debitCard.getPassportDate());
         result.setPassportOrganization(debitCard.getPassportOrganization());
-        result.setUserMessager(telegramUserService.findOrCreateUser(telegramId));
+        result.setUserMessager(telegramUserService.findOrCreateUser(telegramId, userType));
 
         result.setStatus(RequestStatus.NEW);
 
         return result;
     }
 
-    public CreditCard constructEntity(CreditCard creditCard, String telegramId) {
+    public CreditCard constructEntity(CreditCard creditCard, String telegramId, String userType) {
         CreditCard result = metadata.create(CreditCard.class);
 
         result.setFirstName(creditCard.getFirstName());
@@ -50,7 +50,7 @@ public class ConstructEntityUtil {
         result.setPassportSerial(creditCard.getPassportSerial());
         result.setPassportDate(creditCard.getPassportDate());
         result.setPassportOrganization(creditCard.getPassportOrganization());
-        result.setUserMessager(telegramUserService.findOrCreateUser(telegramId));
+        result.setUserMessager(telegramUserService.findOrCreateUser(telegramId, userType));
 
         result.setWorkPlace(creditCard.getWorkPlace());
         result.setWorkExperience(creditCard.getWorkExperience());

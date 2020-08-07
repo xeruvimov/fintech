@@ -17,9 +17,9 @@ public class CreditCardServiceBean implements CreditCardService {
 
 
     @Override
-    public UUID createCreditCardRequest(CreditCard creditCard, String telegramId) {
+    public UUID createCreditCardRequest(CreditCard creditCard, String telegramId, String userType) {
         try (Transaction transaction = persistence.createTransaction()) {
-            CreditCard entity = constructEntityUtil.constructEntity(creditCard, telegramId);
+            CreditCard entity = constructEntityUtil.constructEntity(creditCard, telegramId, userType);
             persistence.getEntityManager().persist(entity);
             transaction.commit();
             return entity.getId();

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://browseCaption"
+        focusComponent="telegramUsersTable"
+        messagesPack="com.iwgdupo.fintech.web.screens.telegramuser">
+    <data readOnly="true">
+        <collection id="telegramUsersDc"
+                    class="com.iwgdupo.fintech.entity.TelegramUser"
+                    view="_local">
+            <loader id="telegramUsersDl">
+                <query>
+                    <![CDATA[select e from fintech_TelegramUser e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="telegramUsersTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="telegramUsersTable"
+                dataLoader="telegramUsersDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="telegramUsersTable"
+                    width="100%"
+                    dataContainer="telegramUsersDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="msgId"/>
+                <column id="userType"/>
+                <column id="name"/>
+                <column id="lastName"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="telegramUsersTable.create"/>
+                <button id="editBtn" action="telegramUsersTable.edit"/>
+                <button id="removeBtn" action="telegramUsersTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

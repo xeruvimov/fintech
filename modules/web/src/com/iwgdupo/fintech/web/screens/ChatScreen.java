@@ -1,14 +1,12 @@
 package com.iwgdupo.fintech.web.screens;
 
+import com.haulmont.cuba.core.global.MetadataTools;
 import com.haulmont.cuba.core.global.Sort;
 import com.haulmont.cuba.gui.UiComponents;
 import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.model.CollectionContainer;
 import com.haulmont.cuba.gui.model.CollectionLoader;
-import com.haulmont.cuba.gui.screen.Screen;
-import com.haulmont.cuba.gui.screen.Subscribe;
-import com.haulmont.cuba.gui.screen.UiController;
-import com.haulmont.cuba.gui.screen.UiDescriptor;
+import com.haulmont.cuba.gui.screen.*;
 import com.iwgdupo.fintech.entity.Message;
 import com.iwgdupo.fintech.entity.TelegramUser;
 import com.iwgdupo.fintech.service.ChatService;
@@ -23,6 +21,8 @@ public class ChatScreen extends Screen {
     private ChatService chatService;
     @Inject
     private UiComponents uiComponents;
+    @Inject
+    private MetadataTools metadataTools;
     @Inject
     private VBoxLayout vboxMessages;
     @Inject
@@ -44,7 +44,7 @@ public class ChatScreen extends Screen {
         vboxMessages.removeAll();
         currentUser = event.getSelected().iterator().next();
 
-        messagesDl.setParameter("tlgId", currentUser.getTelegramId());
+        messagesDl.setParameter("tlgId", currentUser.getMsgId());
         messagesDl.load();
         showMessages(messagesDc.getMutableItems());
         currentShowedMessageNumber = messagesDc.getMutableItems().size();
@@ -71,7 +71,7 @@ public class ChatScreen extends Screen {
         if (message.getCubaUser() != null) {
             name.setValue(message.getCubaUser().getName() + ":");
         } else {
-            name.setValue(message.getTelegramUser().getTelegramId() + ":");
+            name.setValue(message.getTelegramUser().getMsgId() + ":");
         }
         name.setAlignment(Component.Alignment.TOP_RIGHT);
         name.setWidth("120px");
@@ -96,7 +96,7 @@ public class ChatScreen extends Screen {
 
     public void onSendButtonClick() {
         if (currentUser != null) {
-            chatService.sendMessage(currentUser.getTelegramId(), messageTextField.getValue());
+            chatService.sendMessage(currentUser, messageTextField.getValue());
             messageTextField.clear();
         }
     }
@@ -114,5 +114,12 @@ public class ChatScreen extends Screen {
                 showMessage(messagesDc.getMutableItems().get(currentShowedMessageNumber));
             }
         }
+    }
+
+    @Install(to = "telegramUsersTable.fullNameUser", subject = "columnGenerator")
+    private Component telegramUsersTableFullNameUserColumnGenerator(TelegramUser telegramUser) {
+        Label<String> component = uiComponents.create(Label.NAME);
+        component.setValue(metadataTools.getInstanceName(telegramUser));
+        return component;
     }
 }

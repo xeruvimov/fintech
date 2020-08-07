@@ -43,8 +43,9 @@ public class RequestStatusServiceBean implements RequestStatusService {
     private List<MinimalRequestDTO> getActiveCreditCard(String id) {
         try (Transaction transaction = persistence.createTransaction()) {
             List<CreditCard> debitCardList = persistence.getEntityManager().createQuery("select dc from fintech_CreditCard dc " +
-                    "where dc.userMessager.telegramId = :id", CreditCard.class)
+                    "where dc.userMessager.msgId = :id and dc.userMessager.userType = :uT", CreditCard.class)
                     .setParameter("id", id)
+                    .setParameter("uT", "tlg")
                     .getResultList();
             transaction.commit();
             return debitCardList.stream().map(this::mapCreditCardOnDTO).collect(Collectors.toList());
@@ -54,8 +55,9 @@ public class RequestStatusServiceBean implements RequestStatusService {
     private List<MinimalRequestDTO> getActiveDebitCard(String id) {
         try (Transaction transaction = persistence.createTransaction()) {
             List<DebitCard> debitCardList = persistence.getEntityManager().createQuery("select dc from fintech_DebitCard dc " +
-                    "where dc.userMessager.telegramId = :id", DebitCard.class)
+                    "where dc.userMessager.msgId = :id and dc.userMessager.userType = :uT", DebitCard.class)
                     .setParameter("id", id)
+                    .setParameter("uT", "tlg")
                     .getResultList();
             transaction.commit();
             return debitCardList.stream().map(this::mapDebitCardOnDTO).collect(Collectors.toList());
@@ -65,7 +67,7 @@ public class RequestStatusServiceBean implements RequestStatusService {
     private MinimalRequestDTO mapCreditCardOnDTO(CreditCard creditCard) {
         MinimalRequestDTO minimalRequestDTO = new MinimalRequestDTO();
         minimalRequestDTO.setId(creditCard.getId());
-        minimalRequestDTO.setType(DebitCard.NAME);
+        minimalRequestDTO.setType(CreditCard.NAME);
         minimalRequestDTO.setStatus(creditCard.getStatus());
         return minimalRequestDTO;
     }

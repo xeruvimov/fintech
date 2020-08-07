@@ -57,6 +57,9 @@ create table FINTECH_TELEGRAM_USER (
     DELETED_BY varchar(50),
     --
     TELEGRAM_ID varchar(255),
+    USER_TYPE varchar(255),
+    NAME varchar(255),
+    LAST_NAME varchar(255),
     --
     primary key (ID)
 )^
