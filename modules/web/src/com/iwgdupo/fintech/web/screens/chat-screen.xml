@@ -13,7 +13,7 @@
         <collection id="messagesDc" class="com.iwgdupo.fintech.entity.Message" view="message-chat-view">
             <loader id="messagesDl" cacheable="true" softDeletion="true" dynamicAttributes="true">
                 <query>
-                    <![CDATA[select e from fintech_Message e where e.telegramUser.telegramId = :tlgId]]>
+                    <![CDATA[select e from fintech_Message e where e.telegramUser.msgId = :tlgId]]>
                 </query>
             </loader>
         </collection>
