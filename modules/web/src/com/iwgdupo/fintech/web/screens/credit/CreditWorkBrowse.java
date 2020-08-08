@@ -3,7 +3,6 @@ package com.iwgdupo.fintech.web.screens.credit;
 import com.haulmont.cuba.gui.model.CollectionLoader;
 import com.haulmont.cuba.gui.screen.*;
 import com.iwgdupo.fintech.entity.Credit;
-import com.iwgdupo.fintech.entity.CreditCard;
 import com.iwgdupo.fintech.entity.RequestStatus;
 
 import javax.inject.Inject;
@@ -14,11 +13,11 @@ import javax.inject.Inject;
 @LoadDataBeforeShow
 public class CreditWorkBrowse extends StandardLookup<Credit> {
     @Inject
-    private CollectionLoader<CreditCard> creditDl;
+    private CollectionLoader<Credit> creditsDl;
 
     @Subscribe
     public void onBeforeShow(BeforeShowEvent event) {
-        creditDl.setParameter("inProgress", RequestStatus.IN_PROGRESS);
+        creditsDl.setParameter("inProgress", RequestStatus.IN_PROGRESS);
         getScreenData().loadAll();
     }
 }
