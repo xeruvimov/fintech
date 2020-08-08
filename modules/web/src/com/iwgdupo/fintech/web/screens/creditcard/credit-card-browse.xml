@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
-        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
         caption="msg://creditCardBrowse.caption"
         focusComponent="creditCardsTable"
         messagesPack="com.iwgdupo.fintech.web.screens.creditcard">
@@ -37,6 +36,8 @@
                 <column id="firstName"/>
                 <column id="middleName"/>
                 <column id="lastName"/>
+                <column id="status"/>
+                <column id="type"/>
                 <column id="birthdate"/>
                 <column id="phoneNumber"/>
                 <column id="email"/>
@@ -51,7 +52,6 @@
                 <column id="employerAddress"/>
                 <column id="employerPhoneNumber"/>
                 <column id="maritalStatus"/>
-                <column id="status"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"

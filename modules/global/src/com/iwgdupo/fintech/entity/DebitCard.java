@@ -2,10 +2,12 @@ package com.iwgdupo.fintech.entity;
 
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
+import com.haulmont.cuba.core.entity.annotation.PublishEntityChangedEvents;
 
 import javax.persistence.*;
 import java.util.Date;
 
+@PublishEntityChangedEvents
 @NamePattern("%s|firstName")
 @Table(name = "FINTECH_DEBIT_CARD")
 @Entity(name = "fintech_DebitCard")
@@ -51,9 +53,19 @@ public class DebitCard extends StandardEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TELEGRAM_USER_ID")
     protected TelegramUser userMessager;
+    @Column(name = "TYPE_")
+    protected String type;
 
     @Column(name = "STATUS")
     private String status;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public RequestStatus getStatus() {
         return status == null ? null : RequestStatus.fromId(status);

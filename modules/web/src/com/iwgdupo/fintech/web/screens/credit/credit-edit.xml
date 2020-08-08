@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
-        caption="msg://creditCardEdit.caption"
+        caption="msg://editorCaption"
         focusComponent="form"
-        messagesPack="com.iwgdupo.fintech.web.screens.creditcard">
+        messagesPack="com.iwgdupo.fintech.web.screens.credit">
     <data>
-        <instance id="creditCardDc"
-                  class="com.iwgdupo.fintech.entity.CreditCard">
-            <view extends="_local"/>
+        <instance id="creditDc"
+                  class="com.iwgdupo.fintech.entity.Credit"
+                  view="_local">
             <loader/>
         </instance>
     </data>
@@ -14,8 +14,8 @@
                 width="800"/>
     <layout expand="scrollBox" spacing="true">
         <scrollBox id="scrollBox" spacing="true">
-            <form id="form" dataContainer="creditCardDc">
-                <column width="350px">
+            <form id="form" dataContainer="creditDc">
+                <column width="250px">
                     <textField id="firstNameField" property="firstName"/>
                     <textField id="middleNameField" property="middleName"/>
                     <textField id="lastNameField" property="lastName"/>

@@ -36,6 +36,8 @@
                 <column id="firstName"/>
                 <column id="middleName"/>
                 <column id="lastName"/>
+                <column id="status"/>
+                <column id="type"/>
                 <column id="birthdate"/>
                 <column id="phoneNumber"/>
                 <column id="email"/>
@@ -50,7 +52,6 @@
                 <column id="employerAddress"/>
                 <column id="employerPhoneNumber"/>
                 <column id="maritalStatus"/>
-                <column id="status"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"

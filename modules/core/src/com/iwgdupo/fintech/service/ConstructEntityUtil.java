@@ -1,6 +1,7 @@
 package com.iwgdupo.fintech.service;
 
 import com.haulmont.cuba.core.global.Metadata;
+import com.iwgdupo.fintech.entity.Credit;
 import com.iwgdupo.fintech.entity.CreditCard;
 import com.iwgdupo.fintech.entity.DebitCard;
 import com.iwgdupo.fintech.entity.RequestStatus;
@@ -58,6 +59,35 @@ public class ConstructEntityUtil {
         result.setEmployerAddress(creditCard.getEmployerAddress());
         result.setEmployerPhoneNumber(creditCard.getEmployerPhoneNumber());
         result.setMaritalStatus(creditCard.getMaritalStatus());
+
+        result.setStatus(RequestStatus.NEW);
+
+        return result;
+    }
+
+
+    public Credit constructEntity(Credit credit, String telegramId, String userType) {
+        Credit result = metadata.create(Credit.class);
+
+        result.setFirstName(credit.getFirstName());
+        result.setMiddleName(credit.getMiddleName());
+        result.setLastName(credit.getLastName());
+        result.setBirthdate(credit.getBirthdate());
+        result.setPhoneNumber(credit.getPhoneNumber());
+        result.setEmail(credit.getEmail());
+        result.setAddress(credit.getAddress());
+        result.setPassportNumber(credit.getPassportNumber());
+        result.setPassportSerial(credit.getPassportSerial());
+        result.setPassportDate(credit.getPassportDate());
+        result.setPassportOrganization(credit.getPassportOrganization());
+        result.setUserMessager(telegramUserService.findOrCreateUser(telegramId, userType));
+
+        result.setWorkPlace(credit.getWorkPlace());
+        result.setWorkExperience(credit.getWorkExperience());
+        result.setMonthlyIncome(credit.getMonthlyIncome());
+        result.setEmployerAddress(credit.getEmployerAddress());
+        result.setEmployerPhoneNumber(credit.getEmployerPhoneNumber());
+        result.setMaritalStatus(credit.getMaritalStatus());
 
         result.setStatus(RequestStatus.NEW);
 

@@ -6,5 +6,6 @@
         <class>com.iwgdupo.fintech.entity.Message</class>
         <class>com.iwgdupo.fintech.entity.TelegramUser</class>
         <class>com.iwgdupo.fintech.entity.CreditCard</class>
+        <class>com.iwgdupo.fintech.entity.Credit</class>
     </persistence-unit>
 </persistence>

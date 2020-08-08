@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
 
-    <view entity="fintech_DebitCard" name="debitCard-view" extends="_minimal">
-        <property name="middleName"/>
-        <property name="lastName"/>
-        <property name="birthdate"/>
-        <property name="phoneNumber"/>
-        <property name="email"/>
-        <property name="address"/>
-        <property name="passportNumber"/>
-        <property name="passportSerial"/>
-        <property name="passportDate"/>
-        <property name="passportOrganization"/>
-        <property name="status"/>
+    <view entity="fintech_DebitCard" name="debitCard-view" extends="_local">
+        <property name="userMessager" view="_local"/>
     </view>
     <view entity="fintech_TelegramUser" name="telegramUser-chat-view" extends="_local">
         <property name="messages" view="_minimal">
@@ -26,5 +16,11 @@
         <property name="telegramUser" view="_minimal">
             <property name="msgId"/>
         </property>
+    </view>
+    <view entity="fintech_CreditCard" name="creditCard-view" extends="_local">
+        <property name="userMessager" view="_local"/>
+    </view>
+    <view entity="fintech_Credit" name="credit-view" extends="_local">
+        <property name="userMessager" view="_local"/>
     </view>
 </views>

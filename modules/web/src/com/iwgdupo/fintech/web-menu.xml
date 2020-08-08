@@ -3,6 +3,7 @@
     <menu id="requests" insertBefore="administration">
         <item screen="fintech_DebitCard.browse"/>
         <item screen="fintech_CreditCard.browse" caption="mainMsg://menu_config.fintech_CreditCard.browse"/>
+        <item screen="fintech_Credit.browse"/>
     </menu>
 
     <separator insertAfter="requests"/>
@@ -10,6 +11,7 @@
     <menu id="inWork" insertBefore="administration">
         <item screen="fintech_DebitCardWork.browse"/>
         <item screen="fintech_CreditCardWork.browse"/>
+        <item screen="fintech_CreditWork.browse"/>
     </menu>
 
     <separator insertAfter="inWork"/>
