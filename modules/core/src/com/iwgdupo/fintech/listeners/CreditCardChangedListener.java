@@ -1,6 +1,7 @@
 package com.iwgdupo.fintech.listeners;
 
 import com.haulmont.cuba.core.Persistence;
+import com.haulmont.cuba.core.Transaction;
 import com.haulmont.cuba.core.TransactionalDataManager;
 import com.haulmont.cuba.core.app.events.AttributeChanges;
 import com.haulmont.cuba.core.app.events.EntityChangedEvent;
@@ -33,7 +34,11 @@ public class CreditCardChangedListener {
             AttributeChanges changes = event.getChanges();
 
             if (changes.isChanged("status")) {
-                CreditCard creditCard = txDm.load(event.getEntityId()).view("creditCard-view").one();
+                CreditCard creditCard;
+                try (Transaction tx = txDm.transactions().create()) {
+                    creditCard = txDm.load(event.getEntityId()).view("creditCard-view").one();
+                    tx.commit();
+                }
 
                 String text = "Статус вашей заявки по " + CreditCard.NAME + " изменился на " + creditCard.getStatus();
 

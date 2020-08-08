@@ -1,6 +1,7 @@
 package com.iwgdupo.fintech.listeners;
 
 import com.haulmont.cuba.core.Persistence;
+import com.haulmont.cuba.core.Transaction;
 import com.haulmont.cuba.core.TransactionalDataManager;
 import com.haulmont.cuba.core.app.events.AttributeChanges;
 import com.haulmont.cuba.core.app.events.EntityChangedEvent;
@@ -33,7 +34,11 @@ public class DebitCardChangedListener {
             AttributeChanges changes = event.getChanges();
 
             if (changes.isChanged("status")) {
-                DebitCard debitCard = txDm.load(event.getEntityId()).view("debitCard-view").one();
+                DebitCard debitCard;
+                try (Transaction tx = txDm.transactions().create()) {
+                    debitCard = txDm.load(event.getEntityId()).view("debitCard-view").one();
+                    tx.commit();
+                }
 
                 String text = "Статус вашей заявки по " + DebitCard.NAME + " изменился на " + debitCard.getStatus();
 
