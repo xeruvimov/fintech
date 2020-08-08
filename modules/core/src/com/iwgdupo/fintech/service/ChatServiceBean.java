@@ -18,6 +18,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
+import java.nio.charset.StandardCharsets;
 
 @Service(ChatService.NAME)
 public class ChatServiceBean implements ChatService {
@@ -53,7 +54,7 @@ public class ChatServiceBean implements ChatService {
             Gson gson = new Gson();
             HttpClient httpClient = HttpClientBuilder.create().build();
             HttpPost post = new HttpPost(postUrl);
-            StringEntity postingString = new StringEntity(gson.toJson(pojo));
+            StringEntity postingString = new StringEntity(gson.toJson(pojo), StandardCharsets.UTF_8);
             post.setEntity(postingString);
             post.setHeader("Content-type", "application/json; charset=utf-8");
             HttpResponse response = httpClient.execute(post);
